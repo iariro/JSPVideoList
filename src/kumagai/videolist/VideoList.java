@@ -1,13 +1,22 @@
 package kumagai.videolist;
 
-import java.io.*;
-import java.text.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
+/**
+ * 動画ファイルのリスト
+ */
 class VideoList
 {
-	static private final SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
+	/**
+	 * 動画リストを読み込みリストを出力
+	 * @param args [0]=動画のあるパス
+	 */
 	static public void main(String [] args)
 		throws IOException
 	{
@@ -22,11 +31,19 @@ class VideoList
 
 	File [] files;
 
+	/**
+	 * 動画リストを生成する
+	 * @param path 動画のあるパス
+	 */
 	public VideoList(String path)
 	{
 		files = new File(path).listFiles();
 	}
 
+	/**
+	 * 時間でソートする
+	 * @return 時間でソートしたリスト
+	 */
 	public TreeMap<Integer, ArrayList<File>> sortByHour()
 	{
 		TreeMap<Integer, ArrayList<File>> list = new TreeMap<Integer, ArrayList<File>>();
