@@ -19,7 +19,7 @@ class VideoListHtml
 	 * @param sortVideoList 動画リスト
 	 * @param filename 出力ファイル名
 	 */
-	public VideoListHtml(TreeMap<Integer, ArrayList<File>> sortVideoList, String filename)
+	static public void output(TreeMap<Integer, ArrayList<File>> sortVideoList, String filename)
 		throws IOException
 	{
 		File htmlfile = new File(filename);
@@ -30,7 +30,7 @@ class VideoListHtml
 			writer.printf("<h1>%d時台 %d件</h1>\n", entry.getKey(), entry.getValue().size());
 			for (File file : entry.getValue())
 			{
-				writer.printf("<embed src='%s'></embed>\n", file.getAbsolutePath());
+				writer.printf("<embed src='file:///%s'></embed>\n", file.getAbsolutePath().replaceAll("\\", "/"));
 			}
 		}
 		writer.println("</html>");

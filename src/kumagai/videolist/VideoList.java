@@ -26,7 +26,7 @@ class VideoList
 		{
 			System.out.printf("%d %d\n", entry.getKey(), entry.getValue().size());
 		}
-		new VideoListHtml(sortVideoList, "videolist.html");
+		VideoListHtml.output(sortVideoList, "videolist.html");
 	}
 
 	File [] files;
